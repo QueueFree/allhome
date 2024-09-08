@@ -2,10 +2,11 @@ import logging
 from aiogram import types, Bot, Dispatcher
 from aiogram.utils import executor
 import os
+from dotenv import load_dotenv
 
-TOKEN = "7040928654:AAFTsHahr3YS_HciwvB7fXvGupRVKGFs1os"
+load_dotenv()
 
-bot = Bot(token=TOKEN)
+bot = Bot(os.getenv("TOKEN"))
 dp = Dispatcher(bot=bot)
 
 admin = [5512032771, ]
@@ -47,11 +48,13 @@ async def mem_all_handler(message: types.Message):
 
 numlist1 = 1234567890
 
+
+
+
+
 @dp.message_handler()
-async def echo_handler(message: types.message):
+async def echo_handler(message: types.Message):
     await message.answer(message.text)
-
-
 
 if __name__ == '__main__':
 
