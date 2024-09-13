@@ -2,7 +2,7 @@ import logging
 from aiogram import types
 from aiogram.utils import executor
 from config import bot, admin, dp
-import commands, echo, quiz
+import commands, echo, quiz, fsm_reg, storage
 
 async def on_startup(_):
     for i in admin:
@@ -10,7 +10,8 @@ async def on_startup(_):
 
 commands.register_commands(dp)
 quiz.register_quiz(dp)
-
+fsm_reg.register_fsm_reg(dp)
+storage.register_store(dp)
 
 echo.register_echo(dp)
 
