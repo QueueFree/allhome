@@ -2,19 +2,21 @@ import logging
 from aiogram import types
 from aiogram.utils import executor
 from config import bot, admin, dp
-import commands, echo, quiz, fsm_reg, storage
+import commands, echo, quiz, fsm
+from allhome.db import db_main
+from buttons import start_test
 
 async def on_startup(_):
     for i in admin:
-        await bot.send_message(chat_id=i, text="Бот включен!")
+        await bot.send_message(chat_id=i, text="Бот включен!",
+                               reply_markup=start_test)
+        await db_main.sql_create()
 
 commands.register_commands(dp)
 quiz.register_quiz(dp)
-fsm_reg.register_fsm_reg(dp)
-storage.register_store(dp)
+fsm.register_store(dp)
 
 echo.register_echo(dp)
-
 
 @dp.message_handler()
 async def echo_handler(message: types.Message):
