@@ -1,14 +1,13 @@
-CREATE_TABLE_PRODUCTS_DETAILS = """
-    CREATE TABLE IF NOT EXISTS products_details (
+CREATE_TABLE_COLLECTION_PRODUCTS = """
+    CREATE TABLE IF NOT EXISTS collection_products (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-    info_product VARCHAR(255),
-    category VARCHAR(255),
-    product_id VARCHAR(255)
+    collection VARCHAR(255) NOT NULL,
+    product_id INTEGER VARCHAR(255) NOT NULL
     )
 """
 
 
-INSERT_PRODUCTS_QUERY = """
-    INSERT INTO products_details (info_product, product_id, category)
-    VALUES (?, ?, ?)
+INSERT_COLLECTION_PRODUCTS_QUERY = """
+    INSERT INTO collection_products (collection, product_id)
+    VALUES (?, ?)
 """
