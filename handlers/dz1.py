@@ -5,6 +5,7 @@ from config import bot, admin, dp
 import commands, echo, quiz, fsm
 from allhome.db import db_main
 from buttons import start_test
+import webapp
 
 async def on_startup(_):
     for i in admin:
@@ -15,6 +16,7 @@ async def on_startup(_):
 commands.register_commands(dp)
 quiz.register_quiz(dp)
 fsm.register_store(dp)
+webapp.register_handlers_webapp(dp)
 
 echo.register_echo(dp)
 

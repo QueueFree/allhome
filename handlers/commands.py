@@ -29,6 +29,11 @@ async def mem_all_handler(message: types.Message):
             with open(photo_path, 'rb') as photo:
                 await bot.send_photo(message.from_user.id, photo)
 
+async def pin(message: types.message):
+    if message.reply_to_message:
+        await bot.pin_chat_message(message_id=message.reply_to_message.message_id, chat_id=message.from_user.id)
+
 def register_commands(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands="start")
     dp.register_message_handler(mem_all_handler, commands="mem_all")
+    dp.register_message_handler(pin, commands="pin")
