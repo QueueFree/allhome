@@ -6,6 +6,7 @@ import commands, echo, quiz, fsm
 from allhome.db import db_main
 from buttons import start_test
 import webapp
+import send_products
 
 async def on_startup(_):
     for i in admin:
@@ -17,6 +18,7 @@ commands.register_commands(dp)
 quiz.register_quiz(dp)
 fsm.register_store(dp)
 webapp.register_handlers_webapp(dp)
+send_products.register_send_products_handler(dp)
 
 echo.register_echo(dp)
 

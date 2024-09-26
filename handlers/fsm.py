@@ -109,7 +109,12 @@ async def submit(message: types.Message, state: FSMContext):
             await message.answer('Отлично, Данные в базе!', reply_markup=kb)
             await db_main.sql_insert_products(
                 collection=data['collection'],
-                product_id=data['product_id']
+                product_id=data['product_id'],
+                name_products=data['name_products'],
+                info_products=data['info_products'],
+                size_products=data['size'],
+                price_products=data['price'],
+                photo=data['photo']
             )
             await state.finish()
 
